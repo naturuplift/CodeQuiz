@@ -58,11 +58,9 @@ function startGame() {
       // console.log(questions[index].answers)
       // console.log(questions[index].correctResponse)
       
-      
     }
 
     //
-
     
 }
 
