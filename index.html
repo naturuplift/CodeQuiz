@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Head -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <!-- full title -->
+    <title>Code Quiz Challenge</title>
     
+    <meta name="description" content="Code Quiz Challenge -
+    This interactive quiz application is designed to test your coding knowledge. Answer a series of multiple-choice questions under a time constraint and save your initials and score at the end" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<!-- Body -->
+<body class="bg-dark">
+
+    <!-- Score Board and Timer -->
+    <div class="bg-dark container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-4">View High Scores</span>
+          </a>
+    
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Timer</a></li>
+            <li id="timer-display-id" class="nav-item"><a href="#" class="nav-link" aria-current="page">Timer</a></li>
+          </ul>
+        </header>
+      </div>
+    
+    <div class="bg-dark text-secondary px-4 py-5 text-center">
+        <div class="py-5">
+          <h1 class="display-5 fw-bold text-white">Coding Quiz Challenge</h1>
+          <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+            <button type="button" class="btn btn-primary"></button>
+            <button type="button" class="btn btn-primary">Button</button>
+            <button type="button" class="btn btn-primary">Button</button>
+            <button type="button" class="btn btn-primary">Button</button>
+          </div>
+          <div class="col-lg-6 mx-auto">
+            <p class="fs-5 mb-4"></p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+              <button id="start-quiz-button" type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Start Quiz</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- JavaScript code to implement quiz game functionality-->
+    <script src="./assets/scripts/script.js"></script>
 </body>
 </html>
