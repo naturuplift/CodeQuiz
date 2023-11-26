@@ -75,6 +75,12 @@ function displayTimer() {
 
 function displayQuestion(displayQuestions) {
 
+  // <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+  //   <button type="button" class="btn btn-primary"></button>
+  //   <button type="button" class="btn btn-primary">Button</button>
+  //   <button type="button" class="btn btn-primary">Button</button>
+  //   <button type="button" class="btn btn-primary">Button</button>
+  // </div>
     console.log("display question")
 }
 
