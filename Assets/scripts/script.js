@@ -27,61 +27,66 @@ const questions = [
 
   // add game variables
 const startButton = document.getElementById("start-quiz-button");
-// const displayquestionButton = document.getElementById("question-button");
+const timerDisplay = document.getElementById("timer-display-id");
+const startTimeSeconds = 60;
+timerDisplay.textContent = 'Time: ' + startTimeSeconds; // starting time displayed
+var timeRemaining = startTimeSeconds;
+var timeInterval;
+var score = 0;
 
 // game event listeners
 startButton.addEventListener("click", startGame);
 
-// run game
 function startGame() {
-    // start/display timer
-    startTimer();
+    startTimer(); // start/display timer
 
-  // hide start button
-document.querySelector("#start-quiz-button").classList.add("invisible");
+  document.querySelector("#start-quiz-button").classList.add("invisible"); // hide start button
+  document.querySelector(".list-group").classList.toggle("invisible"); // unhide answer buttons
 
-    console.log("start game")
+  console.log("start game")
 
-    for (let index = 0; index < 1; index++) { // TODO CHANGE INDEX TO: questions.length
-      const questionsElement = questions[index];
-      // const {} = questions[index];
+  for (let index = 0; index < 1; index++) { // TODO CHANGE INDEX TO: questions.length
+    const questionsElement = questions[index];
+    // const {} = questions[index];
 
-      displayQuestion(questionsElement); // display question
-      
+    displayQuestion(questionsElement); // display question
 
-      // console.log(questions[index].question)
-      // console.log(questions[index].answers)
-      // console.log(questions[index].correctResponse)
-      
-    }
+    // console.log(questions[index].correctResponse)
+  }
 }
 
 function displayQuestion(questionElementObj) {
-
   // const startButton = document.getElementById("start-quiz-button");
   document.querySelector(".display-2").style.fontSize = "30px";
   document.querySelector(".display-2").innerHTML = questionElementObj.question;
-
   // display questions
   document.querySelector("#first-answer-btn").innerHTML = questionElementObj.answers[0];
   document.querySelector("#second-answer-btn").innerHTML = questionElementObj.answers[1];
   document.querySelector("#third-answer-btn").innerHTML = questionElementObj.answers[2];
   document.querySelector("#fourth-answer-btn").innerHTML = questionElementObj.answers[3];
-  // unhide answer buttons
-  document.querySelector(".list-group").classList.toggle("invisible");
-  
-
-  console.log("display question")
-  console.log(document.querySelector(".display-2"))
-  console.log(questionElementObj)
-  console.log(questionElementObj.question)
 }
 
 function startTimer() {
-  displayTimer();
-  // console.log("start timer")
+// run time interval for the game
+  timeInterval = setInterval(function() {
+    if (timeRemaining >= 0) {
+      displayTimer();
+      timeRemaining--;
+    } else {
+      endGame();
+    }
+  }, startTimeSeconds*17);
 }
 
 function displayTimer() {
-  // console.log("display timer")
+  const timeLeftSeconds = timeRemaining%(startTimeSeconds+1);
+  // timerDisplay.textContent = `Time: ${formatTime(timeLeftSeconds)}`;
+  timerDisplay.textContent = "Time: " + timeLeftSeconds;
+}
+
+function endGame() {
+  clearInterval(timeInterval);
+  document.querySelector(".display-2").style.fontSize = "60px";
+  document.querySelector(".display-2").innerHTML = "GAME OVER";
+  // reset question display
 }
