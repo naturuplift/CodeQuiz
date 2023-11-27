@@ -47,11 +47,12 @@ function startGame() {
     // display questions
     // console.log(questions.length)
     // console.table(questions)
-    for (let index = 0; index < questions.length; index++) {
+    for (let index = 0; index < 1; index++) { // TODO CHANGE INDEX TO: questions.length
       const questionsElement = questions[index];
       // const {} = questions[index];
 
       displayQuestion(questionsElement); // display question
+      
 
       // console.log(questions[index].question)
       // console.log(questions[index].answers)
@@ -60,16 +61,24 @@ function startGame() {
     }
 }
 
-function displayQuestion(displayQuestions) {
+function displayQuestion(questionElementObj) {
 
+  // const startButton = document.getElementById("start-quiz-button");
+  document.querySelector(".display-2").style.fontSize = "30px";
+  document.querySelector(".display-2").innerHTML = questionElementObj.question;
+
+  
   // <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
   //   <button type="button" class="btn btn-primary"></button>
   //   <button type="button" class="btn btn-primary">Button</button>
   //   <button type="button" class="btn btn-primary">Button</button>
   //   <button type="button" class="btn btn-primary">Button</button>
   // </div>
-  
+
     console.log("display question")
+    console.log(document.querySelector(".display-2"))
+    console.log(questionElementObj)
+    console.log(questionElementObj.question)
 }
 
 function startTimer() {
