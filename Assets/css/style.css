@@ -11,9 +11,9 @@ h1 {
   color: aliceblue;
 }
 
-.invisible {
+/* .invisible {
   visibility: hidden;
-}
+} */
   
 #quiz-game {
   max-width: 600px;

@@ -29,24 +29,19 @@ const questions = [
 const startButton = document.getElementById("start-quiz-button");
 // const displayquestionButton = document.getElementById("question-button");
 
-
 // game event listeners
 startButton.addEventListener("click", startGame);
-// displayquestionButton.addEventListener("click", displayQuestion);
-console.log(startButton)//,displayquestionButton)
 
-
+// run game
 function startGame() {
     // start/display timer
     startTimer();
 
-    // change start button to next question
-    document.querySelector("#start-quiz-button").innerHTML = "Next Question";
+  // hide start button
+document.querySelector("#start-quiz-button").classList.add("invisible");
 
     console.log("start game")
-    // display questions
-    // console.log(questions.length)
-    // console.table(questions)
+
     for (let index = 0; index < 1; index++) { // TODO CHANGE INDEX TO: questions.length
       const questionsElement = questions[index];
       // const {} = questions[index];
@@ -67,18 +62,19 @@ function displayQuestion(questionElementObj) {
   document.querySelector(".display-2").style.fontSize = "30px";
   document.querySelector(".display-2").innerHTML = questionElementObj.question;
 
+  // display questions
+  document.querySelector("#first-answer-btn").innerHTML = questionElementObj.answers[0];
+  document.querySelector("#second-answer-btn").innerHTML = questionElementObj.answers[1];
+  document.querySelector("#third-answer-btn").innerHTML = questionElementObj.answers[2];
+  document.querySelector("#fourth-answer-btn").innerHTML = questionElementObj.answers[3];
+  // unhide answer buttons
+  document.querySelector(".list-group").classList.toggle("invisible");
   
-  // <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-  //   <button type="button" class="btn btn-primary"></button>
-  //   <button type="button" class="btn btn-primary">Button</button>
-  //   <button type="button" class="btn btn-primary">Button</button>
-  //   <button type="button" class="btn btn-primary">Button</button>
-  // </div>
 
-    console.log("display question")
-    console.log(document.querySelector(".display-2"))
-    console.log(questionElementObj)
-    console.log(questionElementObj.question)
+  console.log("display question")
+  console.log(document.querySelector(".display-2"))
+  console.log(questionElementObj)
+  console.log(questionElementObj.question)
 }
 
 function startTimer() {
