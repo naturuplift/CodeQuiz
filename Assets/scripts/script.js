@@ -37,12 +37,11 @@ console.log(startButton)//,displayquestionButton)
 
 
 function startGame() {
-
     // start/display timer
     startTimer();
 
     // change start button to next question
-    document.querySelector("button").innerHTML = "Next Question";
+    document.querySelector("#start-quiz-button").innerHTML = "Next Question";
 
     console.log("start game")
     // display questions
@@ -59,18 +58,6 @@ function startGame() {
       // console.log(questions[index].correctResponse)
       
     }
-
-    //
-    
-}
-
-function startTimer() {
-  displayTimer();
-  // console.log("start timer")
-}
-
-function displayTimer() {
-  // console.log("display timer")
 }
 
 function displayQuestion(displayQuestions) {
@@ -81,8 +68,15 @@ function displayQuestion(displayQuestions) {
   //   <button type="button" class="btn btn-primary">Button</button>
   //   <button type="button" class="btn btn-primary">Button</button>
   // </div>
+  
     console.log("display question")
 }
 
+function startTimer() {
+  displayTimer();
+  // console.log("start timer")
+}
 
-
+function displayTimer() {
+  // console.log("display timer")
+}

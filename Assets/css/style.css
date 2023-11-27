@@ -8,9 +8,9 @@ body {
     color: aliceblue;
   }
 
-  /* .btn{
-    color: gold;
-  } */
+.invisible {
+  visibility: hidden;
+}
   
   #quiz-game {
     max-width: 600px;
