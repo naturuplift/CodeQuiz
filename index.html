@@ -21,12 +21,12 @@
   <!-- Score Board and Timer -->
   <div class="bg-secondary container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <span class="fs-4">View High Scores</span>
+      <a  class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <button class="fs-4 bg-dark">View High Scores</button>
       </a>
       <!-- timer display -->
       <ul class="nav nav-pills">
-        <li id="timer-display-id" class="nav-item"><a href="#" class="nav-link" aria-current="page">Timer</a></li>
+        <li id="timer-display-id" class="nav-item bg-dark"><a href="#" class="nav-link" aria-current="page">Timer</a></li>
       </ul>
     </header>
   </div>
@@ -51,17 +51,15 @@
     <!-- start and next button -->
     <div class="col-lg-6 mx-auto">
       <!-- use this element if want to display message/notes/details -->
-      <p class="fs-5 mb-4"></p>
+      <p id = "game-results" class="fs-5 mb-4"></p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button id="start-quiz-button" type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Start Quiz</button>
       </div>
+      <button id="start-quiz-button" type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Start Quiz</button>
     </div>
 
   </div>
 
   <!-- JavaScript code to implement quiz game functionality-->
   <script src="./assets/scripts/script.js"></script>
-
 </body>
-
 </html>

@@ -1,4 +1,3 @@
-
 // Pool of question and answers for quiz game
 const questions = [
     {
@@ -32,6 +31,8 @@ const firstAnswerBtn = document.getElementById("first-answer-btn");
 const secondAnswerBtn = document.getElementById("second-answer-btn");
 const thirdAnswerBtn = document.getElementById("third-answer-btn");
 const fourthAnswerBtn = document.getElementById("fourth-answer-btn");
+const resultContainer = document.getElementById("game-results");
+const viewHighScores = document.getElementById("d-flex");
 
 // add listeners for answer buttons
 firstAnswerBtn.addEventListener('click', function() {
@@ -47,12 +48,21 @@ fourthAnswerBtn.addEventListener('click', function() {
   answeredQuestion("D");
 });
 
+// var savedScore; // scored saved locally
+// localStorage.setItem(initials, 0);
+// viewHighScores.addEventListener('click', function() {
+//   var savedScore =getScoreFromLocalStorage();
+//   document.querySelector(".d-flex").innerHTML = savedScore;
+// });
+
 const startTimeSeconds = 60;
 timerDisplay.textContent = 'Time: ' + startTimeSeconds; // starting time displayed
 var timeRemaining = startTimeSeconds;
 var timeInterval;
-var score = 0;
-var questionAnswered = 0; // to keep track of # question answered 
+var questionAnswered = 0; // to keep track of # question answered
+var answerScore = 0; // keep score for answers
+var timeLeftSeconds;
+var scoresRegistry = []; // initialize score
 
 // game event listeners
 startButton.addEventListener("click", startGame);
@@ -60,6 +70,8 @@ startButton.addEventListener("click", startGame);
 function startGame() {
   console.log("start game") // TODO comment when game completed
   startTimer(); // start/display timer
+
+  resultContainer.innerHTML = "";
 
   document.querySelector("#start-quiz-button").classList.add("invisible"); // hide start button
   document.querySelector(".list-group").classList.toggle("invisible"); // unhide answer buttons
@@ -76,6 +88,7 @@ function answeredQuestion(answerClick) {
   // display if correct or incorrect answer
   if (answerClick === questions[questionAnswered].correctResponse) {
     document.querySelector(".fs-5").innerHTML = "Correct!";
+    answerScore ++;
   } else {
     document.querySelector(".fs-5").innerHTML = "Incorrect!";
     timeRemaining = timeRemaining - 15; // decrease time when selected wrong answer
@@ -93,8 +106,6 @@ function answeredQuestion(answerClick) {
     displayQuestion(questions[questionAnswered]); // display question
   }
 }
-
-
 
 // display question and answer options
 function displayQuestion(questionElementObj) {
@@ -125,7 +136,7 @@ function startTimer() {
 
 // display remaining time in game
 function displayTimer() {
-  const timeLeftSeconds = timeRemaining%(startTimeSeconds+1);
+  timeLeftSeconds = timeRemaining%(startTimeSeconds+1);
   timerDisplay.textContent = "Time: " + timeLeftSeconds;
 }
 
@@ -138,10 +149,35 @@ function endGame() {
   document.querySelector(".list-group").classList.toggle("invisible"); // hide answer buttons
   document.querySelector("#start-quiz-button").classList.toggle("invisible"); // unhide start button
   document.querySelector("#ask-to-select").classList.toggle("invisible"); // hide question <p>
-  document.querySelector(".fs-5").innerHTML = ""; // TODO comment when game completed
+
+  resultContainer.innerHTML = `
+  <h2>Your Score: ${answerScore} out of ${questions.length}</h2>
+  <h3>You scored: ${answerScore} /4 correct answers </h3>
+  <p>Time Left: ${timeLeftSeconds}</p>
+  <label for="initials">Enter Initials:</label>
+  <input type="text" id="initials" />
+  <button onclick="saveScore()">Save Score</button>
+  `;
+  resultContainer.style.display = "block";
+
+
+
   timeRemaining = startTimeSeconds; // reset timer
-  score = 0;
   questionAnswered = 0; // reset questions answered counter
+  savedScore = 0;
+  
   console.log("exit endGame function") // TODO comment when game completed
   return;
+}
+
+// Function to save the score
+function saveScore() {
+  const initialsInput = document.getElementById("initials");
+  const initials = initialsInput.toString();
+
+  // Save the score and initials
+  console.log(`Score: ${answerScore}, Initials: ${initials}`); // TODO comment when game completed
+
+  localStorage.setItem(initials, answerScore);
+  answerScore = 0; // reset score
 }
