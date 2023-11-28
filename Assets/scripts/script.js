@@ -21,7 +21,6 @@ const questions = [
     answers: ["DOM API", "JSON API", "AJAX (Asynchronous JavaScript and XML)", "C WebSocket API"],
     correctResponse: "C"
     },
-    // add more Q & A
   ];
 
   // add game variables
@@ -83,7 +82,7 @@ function startGame() {
 
 // listen for answered question and track answer
 function answeredQuestion(answerClick) {
-  console.log('This is the clicked answer: ' + answerClick) // TODO comment when game completed
+  // console.log('This is the clicked answer: ' + answerClick) // TODO comment when game completed
 
   // display if correct or incorrect answer
   if (answerClick === questions[questionAnswered].correctResponse) {
@@ -96,11 +95,11 @@ function answeredQuestion(answerClick) {
 
   // increment to go to next question
   questionAnswered ++;
-  console.log(' The question to be answer now is: ' + questionAnswered); // TODO comment when game completed
+  // console.log(' The question to be answer now is: ' + questionAnswered); // TODO comment when game completed
 
   //end game is answers completed
   if (questionAnswered >= 4) {
-    console.log('Answered all questions - GAME OVER - restart game') // TODO comment when game completed
+    // console.log('Answered all questions - GAME OVER - restart game') // TODO comment when game completed
     endGame();
   } else {
     displayQuestion(questions[questionAnswered]); // display question
@@ -128,7 +127,7 @@ function startTimer() {
     } else {
       timeRemaining--;
       endGame(); // finish game
-      console.log("exit startTimer function") // TODO comment when game completed
+      // console.log("exit startTimer function") // TODO comment when game completed
       return;
     }
   }, startTimeSeconds*17);
@@ -152,7 +151,6 @@ function endGame() {
 
   resultContainer.innerHTML = `
   <h2>Your Score: ${answerScore} out of ${questions.length}</h2>
-  <h3>You scored: ${answerScore} /4 correct answers </h3>
   <p>Time Left: ${timeLeftSeconds}</p>
   <label for="initials">Enter Initials:</label>
   <input type="text" id="initials" />
@@ -160,14 +158,10 @@ function endGame() {
   `;
   resultContainer.style.display = "block";
 
-
-
   timeRemaining = startTimeSeconds; // reset timer
   questionAnswered = 0; // reset questions answered counter
   savedScore = 0;
-  
-  console.log("exit endGame function") // TODO comment when game completed
-  return;
+  // console.log("exit endGame function") // TODO comment when game completed
 }
 
 // Function to save the score
@@ -178,6 +172,7 @@ function saveScore() {
   // Save the score and initials
   console.log(`Score: ${answerScore}, Initials: ${initials}`); // TODO comment when game completed
 
-  localStorage.setItem(initials, answerScore);
+  var scoreObj = {}
+  localStorage.setItem('initials', answerScore);
   answerScore = 0; // reset score
 }
