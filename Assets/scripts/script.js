@@ -5,22 +5,22 @@ const questions = [
       question: "What does API stand for in the context of Web development?",
       answers: ["Advanced Programming Interface", "Application Programming Interface",
        "Automated Programming Interface", "Abstract Programming Interface"],
-      correctResponse: "Application Programming Interface"
+      correctResponse: "B"
     },
     {
       question: "Which Web API is used for making asynchronous HTTP requests in JavaScript?",
       answers: ["DOM API", "JSON API", "AJAX (Asynchronous JavaScript and XML)", "C WebSocket API"],
-      correctResponse: "AJAX (Asynchronous JavaScript and XML)"
+      correctResponse: "C"
     },
     {
       question: "What does HTML stand for?",
       answers: ["Hyper Text Markup Language", "High-level Text Markup Language", "Hyperlink and Text Markup Language", "Home Tool Markup Language"],
-      correctResponse: "Hyper Text Markup Language"
+      correctResponse: "A"
     },
     {
     question: "Which Web API is used for making asynchronous HTTP requests in JavaScript?",
     answers: ["DOM API", "JSON API", "AJAX (Asynchronous JavaScript and XML)", "C WebSocket API"],
-    correctResponse: "AJAX (Asynchronous JavaScript and XML)"
+    correctResponse: "C"
     },
     // add more Q & A
   ];
@@ -28,103 +28,108 @@ const questions = [
   // add game variables
 const startButton = document.getElementById("start-quiz-button");
 const timerDisplay = document.getElementById("timer-display-id");
-// const answerSelected =  document.querySelector("#first-answer-btn").innerHTML = questionElementObj.answers[0];
+const firstAnswerBtn = document.getElementById("first-answer-btn");
+const secondAnswerBtn = document.getElementById("second-answer-btn");
+const thirdAnswerBtn = document.getElementById("third-answer-btn");
+const fourthAnswerBtn = document.getElementById("fourth-answer-btn");
+
+// add listeners for answer buttons
+firstAnswerBtn.addEventListener('click', function() {
+  answeredQuestion("A");
+});
+secondAnswerBtn.addEventListener('click', function() {
+  answeredQuestion("B");
+});
+thirdAnswerBtn.addEventListener('click', function() {
+  answeredQuestion("C");
+});
+fourthAnswerBtn.addEventListener('click', function() {
+  answeredQuestion("D");
+});
+
 const startTimeSeconds = 60;
 timerDisplay.textContent = 'Time: ' + startTimeSeconds; // starting time displayed
 var timeRemaining = startTimeSeconds;
 var timeInterval;
 var score = 0;
+var questionAnswered = 0; // to keep track of # question answered 
 
 // game event listeners
 startButton.addEventListener("click", startGame);
 
 function startGame() {
-  console.log("start game")
+  console.log("start game") // TODO comment when game completed
   startTimer(); // start/display timer
 
   document.querySelector("#start-quiz-button").classList.add("invisible"); // hide start button
   document.querySelector(".list-group").classList.toggle("invisible"); // unhide answer buttons
+  document.querySelector("#ask-to-select").classList.toggle("invisible"); // unhide question <p>
 
-  for (let index = 0; index < 1; index++) { // TODO CHANGE INDEX TO: questions.length
-    const questionsElement = questions[index];
+  // display questions first
+  displayQuestion(questions[questionAnswered]);
+}
 
-    displayQuestion(questionsElement); // display question
-    // console.log(questionsElement)
+// listen for answered question and track answer
+function answeredQuestion(answerClick) {
+  console.log('This is the clicked answer: ' + answerClick) // TODO comment when game completed
 
-    answeredQuestion(index); // listen for answer selected
-    
-    // const element = questions.answers[index]; 
-    // console.log(questions[index].correctResponse)   
+  // display if correct or incorrect answer
+  if (answerClick === questions[questionAnswered].correctResponse) {
+    document.querySelector(".fs-5").innerHTML = "Correct!";
+  } else {
+    document.querySelector(".fs-5").innerHTML = "Incorrect!";
+    timeRemaining = timeRemaining - 15; // decrease time when selected wrong answer
+  }
+
+  // increment to go to next question
+  questionAnswered ++;
+  console.log(' The question to be answer now is: ' + questionAnswered); // TODO comment when game completed
+
+  //end game is answers completed
+  if (questionAnswered >= 4) {
+    console.log('Answered all questions - GAME OVER - restart game') // TODO comment when game completed
+    endGame();
+  } else {
+    displayQuestion(questions[questionAnswered]); // display question
   }
 }
 
-// listen for answered question
-function answeredQuestion(questionIndex) {
-  document.querySelectorAll(".answer-btn")[0].addEventListener("click",trackAnswer(0));
-  document.querySelectorAll(".answer-btn")[1].addEventListener("click",trackAnswer(1));
-  document.querySelectorAll(".answer-btn")[2].addEventListener("click",trackAnswer(2));
-  document.querySelectorAll(".answer-btn")[3].addEventListener("click",trackAnswer(3));
 
-  var buttonInnerHTML = this.innerHTML;
 
-  // trackAnswer(buttonInnerHTML);
-  console.log(buttonInnerHTML)
-}
-
-function trackAnswer(key) {
-  console.log(key)
-  switch (key) {
-    case 0:
-      console.log("answered #1")
-      break;
-    case 1:
-      console.log("answered #2")
-      break;
-    case 2:
-      console.log("answered #3")
-      break;
-    case 3:
-      console.log("answered #4")
-      break;
-    default:
-      break;
-  }
-}
-
+// display question and answer options
 function displayQuestion(questionElementObj) {
-  // const startButton = document.getElementById("start-quiz-button");
+  // display question
   document.querySelector(".display-2").style.fontSize = "30px";
   document.querySelector(".display-2").innerHTML = questionElementObj.question;
-  // display questions
+  // display answers selection
   document.querySelector("#first-answer-btn").innerHTML = questionElementObj.answers[0];
   document.querySelector("#second-answer-btn").innerHTML = questionElementObj.answers[1];
   document.querySelector("#third-answer-btn").innerHTML = questionElementObj.answers[2];
   document.querySelector("#fourth-answer-btn").innerHTML = questionElementObj.answers[3];
-  // console.log("exit displayQuestion function")
 }
 
-function startTimer() {
 // run time interval for the game
+function startTimer() {
   timeInterval = setInterval(function() {
     if (timeRemaining >= 0) {
-      displayTimer();
+      displayTimer(); // display remaining time in game
       timeRemaining--;
     } else {
       timeRemaining--;
-      endGame();
-      console.log("exit startTimer function")
+      endGame(); // finish game
+      console.log("exit startTimer function") // TODO comment when game completed
       return;
     }
   }, startTimeSeconds*17);
 }
 
+// display remaining time in game
 function displayTimer() {
   const timeLeftSeconds = timeRemaining%(startTimeSeconds+1);
-  // timerDisplay.textContent = `Time: ${formatTime(timeLeftSeconds)}`;
   timerDisplay.textContent = "Time: " + timeLeftSeconds;
-  // console.log("exit displayTimer function")
 }
 
+// finish game and reset buttons
 function endGame() {
   clearInterval(timeInterval);
   document.querySelector(".display-2").style.fontSize = "60px";
@@ -132,7 +137,11 @@ function endGame() {
   // reset question display
   document.querySelector(".list-group").classList.toggle("invisible"); // hide answer buttons
   document.querySelector("#start-quiz-button").classList.toggle("invisible"); // unhide start button
+  document.querySelector("#ask-to-select").classList.toggle("invisible"); // hide question <p>
+  document.querySelector(".fs-5").innerHTML = ""; // TODO comment when game completed
   timeRemaining = startTimeSeconds; // reset timer
-  console.log("exit endGame function")
+  score = 0;
+  questionAnswered = 0; // reset questions answered counter
+  console.log("exit endGame function") // TODO comment when game completed
   return;
 }
