@@ -14,7 +14,7 @@
 </p>
 <br/>
 
-Welcome to the Code Quiz Project! This interactive quiz application is designed to test your coding knowledge. Answer a series of multiple-choice questions under a time constraint and save your initials and score at the end.
+Welcome to the Code Quiz Challenge! This interactive quiz application is designed to test your coding knowledge. Answer a series of multiple-choice questions under a time constraint and save your initials and score at the end.
 
 ## Getting Started
 To start the quiz, click on the "Start Quiz" button. Answer each question within the given time limit to progress through the quiz.
