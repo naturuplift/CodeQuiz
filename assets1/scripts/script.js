@@ -17,9 +17,9 @@ const questions = [
       correctResponse: "A"
     },
     {
-    question: "Which Web API is used for making asynchronous HTTP requests in JavaScript?",
-    answers: ["DOM API", "JSON API", "AJAX (Asynchronous JavaScript and XML)", "C WebSocket API"],
-    correctResponse: "C"
+    question: "Which keyword is used to declare a variable in JavaScript?",
+    answers: ["var", "let", "const", "variable"],
+    correctResponse: "A"
     },
   ];
 
@@ -174,7 +174,7 @@ function saveScore() {
   var getScore = localStorage.getItem("answerScore");
 
   // Stores name input in local Storage if score greater that saved one
-  if (answerScore > getScore) {
+  if (answerScore >= getScore) {
     localStorage.setItem("Initials", initials);
     localStorage.setItem("answerScore", answerScore);
   }
