@@ -1,5 +1,5 @@
 
-# Code Quiz Project
+# Code Quiz Challenge
 
 <br/>
 <p align="center">
