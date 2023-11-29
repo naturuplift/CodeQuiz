@@ -36,9 +36,14 @@ Initial state when the user clicks the "Start Quiz" button.
 
 Presenting a question along with answer options.
 
+![Display question](https://github.com/naturuplift/code-quiz/assets/23546356/2c0a6b05-ae93-49da-9154-ccf5e49a0a4a)
+
 ## Select an Answer
 
 Please select answer.
+
+![Selecting answer](https://github.com/naturuplift/code-quiz/assets/23546356/428099e1-31f3-4f93-84d7-ec1151c610ec)
+
 
 ## Display Next Question or Show Result
 
