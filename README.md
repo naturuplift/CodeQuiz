@@ -20,12 +20,6 @@ Welcome to the Code Quiz Project! This interactive quiz application is designed 
 To start the quiz, click on the "Start Quiz" button. Answer each question within the given time limit to progress through the quiz.
 To use the application, simply visit the [Code Quiz Page][code-quiz-app]. Follow the prompts to customize your password based on length and character types.
 
-## Password Criteria
-- Password Length: Enter a value between 8 and 128 characters.
-- Character Types: Choose at least one of the following: Lowercase, Uppercase, Numeric, Special Characters.
-
-
-
 ## Source Code
 Explore the inner workings of the Code Quiz by checking out the [source code on GitHub][quiz-code]. Feel free to contribute and enhance the project!
 
@@ -35,25 +29,38 @@ Explore the inner workings of the Code Quiz by checking out the [source code on 
 
 Initial state when the user clicks the "Start Quiz" button.
 
+![Starting Page](https://github.com/naturuplift/code-quiz/assets/23546356/e4e83bdf-95e5-46e0-9b1c-ce561f584b0c)
+
+
 ## Display Question 
 
 Presenting a question along with answer options.
 
-## Check Answer
+## Select an Answer
 
-Checking the selected answer and updating the score.
+Please select answer.
 
 ## Display Next Question or Show Result
 
-Moving to the next question or showing the final result, depending on the progress.
+Moving to the next question after answering or showing the final result if last question, depending on the progress.
+The next question would display is last answer was correct or not.
 
 ## Show Result 
 
-Displaying the user's final score and providing an option to restart the quiz.
+Displaying the user's final score with the ability to save score with initials and providing an option to restart the quiz.
+
+![Show Result](https://github.com/naturuplift/code-quiz/assets/23546356/8bcd51cf-ddc5-4421-92b8-075c02d9fdc4)
 
 ## Restart Quiz
 
 Allowing the user to restart the quiz.
+
+## Show High Scores Saved
+
+When clicked on 'View High Scores' button it display the higher score for a user that saved score.
+
+![Show Stored Score](https://github.com/naturuplift/code-quiz/assets/23546356/2ba8a194-e344-490e-b11a-3e664f6a5516)
+
 
 ## State Flow Diagram
 For a visual representation of the sequence of actions involved in the code quiz, refer to the [State Flow Diagram][state-flow] provided in the project documentation.
