@@ -31,7 +31,7 @@ const secondAnswerBtn = document.getElementById("second-answer-btn");
 const thirdAnswerBtn = document.getElementById("third-answer-btn");
 const fourthAnswerBtn = document.getElementById("fourth-answer-btn");
 const resultContainer = document.getElementById("game-results");
-const viewHighScores = document.getElementById("d-flex");
+const viewHighScores = document.getElementById("fs-3");
 
 // add listeners for answer buttons
 firstAnswerBtn.addEventListener('click', function() {
@@ -47,12 +47,11 @@ fourthAnswerBtn.addEventListener('click', function() {
   answeredQuestion("D");
 });
 
-// var savedScore; // scored saved locally
-// localStorage.setItem(initials, 0);
-// viewHighScores.addEventListener('click', function() {
-//   var savedScore =getScoreFromLocalStorage();
-//   document.querySelector(".d-flex").innerHTML = savedScore;
-// });
+var savedScore; // scored saved locally
+
+viewHighScores.addEventListener('click', function() {
+  getScoreFromLocalStorage();
+});
 
 const startTimeSeconds = 60;
 timerDisplay.textContent = 'Time: ' + startTimeSeconds; // starting time displayed
@@ -161,6 +160,7 @@ function endGame() {
   timeRemaining = startTimeSeconds; // reset timer
   questionAnswered = 0; // reset questions answered counter
   savedScore = 0;
+  answerScore = 0;
   // console.log("exit endGame function") // TODO comment when game completed
 }
 
@@ -169,10 +169,15 @@ function saveScore() {
   const initialsInput = document.getElementById("initials");
   const initials = initialsInput.toString();
 
+  // Stores name input in local Storage
+  localStorage.setItem("Initials", "AS");
+  localStorage.setItem("answerScore", answerScore);
   // Save the score and initials
   console.log(`Score: ${answerScore}, Initials: ${initials}`); // TODO comment when game completed
-
-  var scoreObj = {}
-  localStorage.setItem('initials', answerScore);
   answerScore = 0; // reset score
+}
+
+function getScoreFromLocalStorage() {
+  var nameInput = localStorage.getItem("Initials");
+  var getScore = localStorage.getItem("answerScore");
 }
