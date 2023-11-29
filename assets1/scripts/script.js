@@ -66,11 +66,11 @@ var scoresRegistry = []; // initialize score
 startButton.addEventListener("click", startGame);
 
 function startGame() {
-  console.log("start game") // TODO comment when game completed
+  // console.log("start game") // TODO comment when game completed
   startTimer(); // start/display timer
 
   resultContainer.innerHTML = "";
-
+  document.querySelector("#fs-3").innerHTML = "View High Scores";
   document.querySelector("#start-quiz-button").classList.add("invisible"); // hide start button
   document.querySelector(".list-group").classList.toggle("invisible"); // unhide answer buttons
   document.querySelector("#ask-to-select").classList.toggle("invisible"); // unhide question <p>
@@ -160,19 +160,24 @@ function endGame() {
   timeRemaining = startTimeSeconds; // reset timer
   questionAnswered = 0; // reset questions answered counter
   savedScore = 0;
-  answerScore = 0;
+ 
   // console.log("exit endGame function") // TODO comment when game completed
 }
 
 // Function to save the score
 function saveScore() {
-  const initialsInput = document.getElementById("initials");
+  const initialsInput = document.getElementById("initials").value;
   const initials = initialsInput.toString();
 
-  // Stores name input in local Storage
-  localStorage.setItem("Initials", "AS");
-  localStorage.setItem("answerScore", answerScore);
-  // Save the score and initials
+  // get last high score before saving new score
+  var nameInput = localStorage.getItem("Initials");
+  var getScore = localStorage.getItem("answerScore");
+
+  // Stores name input in local Storage if score greater that saved one
+  if (answerScore > getScore) {
+    localStorage.setItem("Initials", initials);
+    localStorage.setItem("answerScore", answerScore);
+  }
   console.log(`Score: ${answerScore}, Initials: ${initials}`); // TODO comment when game completed
   answerScore = 0; // reset score
 }
@@ -180,4 +185,6 @@ function saveScore() {
 function getScoreFromLocalStorage() {
   var nameInput = localStorage.getItem("Initials");
   var getScore = localStorage.getItem("answerScore");
+  viewHighScores.innerHTML = "Person: " + nameInput + ", with highest score: "+ getScore;
+  // console.log(nameInput + " with a score: "+ getScore)  // TODO comment when game completed
 }
