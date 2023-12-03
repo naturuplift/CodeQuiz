@@ -58,12 +58,13 @@ timerDisplay.textContent = 'Time: ' + startTimeSeconds; // starting time display
 var timeRemaining = startTimeSeconds;
 var timeInterval;
 var questionAnswered = 0; // to keep track of # question answered
-var answerScore = 0; // keep score for answers
 var timeLeftSeconds;
 var scoresRegistry = []; // initialize score
 
 // game event listeners
 startButton.addEventListener("click", startGame);
+var answerScore = 0; // keep score for answers
+var tempScore = 0;
 
 function startGame() {
   // console.log("start game") // TODO comment when game completed
@@ -160,7 +161,8 @@ function endGame() {
   timeRemaining = startTimeSeconds; // reset timer
   questionAnswered = 0; // reset questions answered counter
   savedScore = 0;
- 
+  tempScore = answerScore; // reset score
+  answerScore = 0; // reset score
   // console.log("exit endGame function") // TODO comment when game completed
 }
 
@@ -171,15 +173,14 @@ function saveScore() {
 
   // get last high score before saving new score
   var nameInput = localStorage.getItem("Initials");
-  var getScore = localStorage.getItem("answerScore");
+  var getScore = localStorage.getItem("tempScore");
 
   // Stores name input in local Storage if score greater that saved one
-  if (answerScore >= getScore) {
+  if (tempScore >= getScore) {
     localStorage.setItem("Initials", initials);
-    localStorage.setItem("answerScore", answerScore);
+    localStorage.setItem("answerScore", tempScore);
   }
-  console.log(`Score: ${answerScore}, Initials: ${initials}`); // TODO comment when game completed
-  answerScore = 0; // reset score
+  // console.log(`Score: ${tempScore}, Initials: ${initials}`); // TODO comment when game completed
 }
 
 function getScoreFromLocalStorage() {
