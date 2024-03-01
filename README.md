@@ -76,7 +76,7 @@ Feel free to reach out, contribute, or provide feedback to make the Password Gen
 
 This project is licensed under the MIT License. See the [LICENSE][MIT] file for details.
 
-[code-quiz-app]: <https://naturuplift.github.io/code-quiz/>
+[code-quiz-app]: <https://naturuplift.github.io/CodeQuiz/>
 [quiz-code]: <https://github.com/naturuplift/code-quiz/blob/main/Assets/scripts/script.js>
 [state-flow]: <https://github.com/naturuplift/code-quiz/blob/main/Assets/img/Code%20Quiz%20State%20Diagram%20v3.png>
 [MIT]: <https://github.com/naturuplift/code-quiz/blob/main/LICENSE>
