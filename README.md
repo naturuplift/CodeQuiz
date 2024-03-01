@@ -78,5 +78,5 @@ This project is licensed under the MIT License. See the [LICENSE][MIT] file for 
 
 [code-quiz-app]: <https://naturuplift.github.io/CodeQuiz/>
 [quiz-code]: <https://github.com/naturuplift/CodeQuiz/blob/main/assets1/scripts/script.js>
-[state-flow]: <https://github.com/naturuplift/code-quiz/blob/main/Assets/img/Code%20Quiz%20State%20Diagram%20v3.png>
+[state-flow]: <https://github.com/naturuplift/CodeQuiz/blob/main/assets1/img/Code%20Quiz%20State%20Diagram%20v3.png>
 [MIT]: <https://github.com/naturuplift/code-quiz/blob/main/LICENSE>
